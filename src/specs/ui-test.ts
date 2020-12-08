@@ -11,7 +11,9 @@ describe('Index', () => {
     // browser.executeScript(localSettingForDisableWelcomeInfo, [])
     browser.$('button.gaia-mobile-v2-ui-welcomedialog-close-button').click();
     browser.pause(5000)
-    browser.$('button.gaia-mobile-v2-ui-tooltip-navigation-panel-button .gaia-mobile-v2-ui-tooltip-closebutton').click();
+    browser.$('button.gaia-mobile-v2-ui-tooltip-closebutton').click();
+    browser.pause(5000)
+    
   });
 
   it('should save some screenshots', () => {
