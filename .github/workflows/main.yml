@@ -9,7 +9,10 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+env:
+  DOMAIN: ${{ secrets.DOMAIN }}
+  USERNAME: ${{ secrets.USERNAME }}
+  PASSWORD: ${{ secrets.PASSWORD }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
