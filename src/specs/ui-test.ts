@@ -2,9 +2,9 @@ import { expect } from 'chai';
 
 describe('Index', () => {
   before(() => {
-    browser.url('https://hbr0a.kintone.com/k/m/289/');
-    browser.$("div.form-username-slash input[name='username']").setValue("khiem");
-    browser.$("div.form-password-slash input[name='password']").setValue("khiem");
+    browser.url(`https://${process.env.DOMAIN}/k/m/289/`);
+    browser.$("div.form-username-slash input[name='username']").setValue(`${process.env.USERNAME}`);
+    browser.$("div.form-password-slash input[name='password']").setValue(`${process.env.PASSWORD}`);
     $('input.login-button').click();
     const localSettingForDisableWelcomeInfo = 'window.localStorage.setItem("gaia.1::com.cybozu.kintone.mobile.LocalSetting", \'{"v2NavigationPanelButtonTooltipDisplayed":true,"v2WelcomeDialogDisplayed":true}\')';
     browser.executeScript(localSettingForDisableWelcomeInfo, [])
@@ -33,7 +33,7 @@ describe('Index', () => {
 
 // describe('Create', () => {
 //   before(() => {
-//      browser.url('https://hirayama-2008-1.cybozu-dev.com/k/m/5/');
+//      browser.url(`https://${process.env.DOMAIN}/k/m/289/`);
 //      $(".gaia-mobile-v2-app-indextoolbar-addrecord-border").click();
 //   });
 
@@ -58,7 +58,7 @@ describe('Index', () => {
 
 // describe('Detail', () => {
 //   before(() => {
-//      browser.url('https://hirayama-2008-1.cybozu-dev.com/k/m/5/show?record=1&prev=0&next=0&view=20');
+//      browser.url(`https://${process.env.DOMAIN}/k/m/289/show?record=1&prev=0&next=0&view=20`);
 //   });
 
 //   it('should save some screenshots', () => {
@@ -82,7 +82,7 @@ describe('Index', () => {
 
 // describe('Edit', () => {
 //   before(() => {
-//      browser.url('https://hirayama-2008-1.cybozu-dev.com/k/m/5/show?record=1&prev=0&next=0&view=20');
+//      browser.url(`https://${process.env.DOMAIN}/k/m/289/show?record=1&prev=0&next=0&view=20`);
 //      $('.gaia-mobile-v2-app-record-showtoolbar-editrecord-border').click();
 //   });
 
