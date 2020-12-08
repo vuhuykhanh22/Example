@@ -6,14 +6,13 @@ describe('Index', () => {
     browser.$("div.form-username-slash input[name='username']").setValue(`${process.env.USERNAME}`);
     browser.$("div.form-password-slash input[name='password']").setValue(`${process.env.PASSWORD}`);
     browser.$('input.login-button').click();
-    browser.pause(10000);
+    browser.pause(5000);
     // const localSettingForDisableWelcomeInfo = 'window.localStorage.setItem("gaia.1::com.cybozu.kintone.mobile.LocalSetting", \'{"v2NavigationPanelButtonTooltipDisplayed":true,"v2WelcomeDialogDisplayed":true}\')';
     // browser.executeScript(localSettingForDisableWelcomeInfo, [])
     browser.$('button.gaia-mobile-v2-ui-welcomedialog-close-button').click();
     browser.pause(5000)
     browser.$('button.gaia-mobile-v2-ui-tooltip-closebutton').click();
     browser.pause(5000)
-    
   });
 
   it('should save some screenshots', () => {
