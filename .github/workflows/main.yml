@@ -1,0 +1,66 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macOS-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+        # Clean Packages & Install Dependencies
+      - name: Clean Packages
+        run: |
+          rm -rf node_modules
+          npm cache clean --force
+          rm -rf package-lock.json
+      - name: Install Appium
+        run: npm install -g appium --chromedriver_version="74.0.3729.6"
+      - name: Install and Run Android Emulator
+        run: |
+          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-29;google_apis;x86_64'
+          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n test_device -k 'system-images;android-29;google_apis;x86_64' --force --device "Nexus 6"
+          echo "List emulator"
+          $ANDROID_HOME/emulator/emulator -list-avds
+          echo "Starting emulator"
+          nohup $ANDROID_HOME/emulator/emulator -avd test_device -no-snapshot > /dev/null 2>&1 &
+          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
+          $ANDROID_HOME/platform-tools/adb devices
+          echo "Emulator started"
+          $ANDROID_HOME/platform-tools/adb -P 5037 -s emulator-5554 shell dumpsys package com.android.chrome
+          # Start the Appium Server
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run test script
+        run: npm run test
+        continue-on-error: true
+
+      - name: Upload wdio-appium log
+        uses: actions/upload-artifact@v1
+        with:
+          name: wdio-appium.log
+          path: wdio-appium.log
+
+      - name: Upload image result
+        uses: actions/upload-artifact@v1
+        with:
+          name: result
+          path: .tmp
