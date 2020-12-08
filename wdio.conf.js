@@ -52,10 +52,9 @@ exports.config = {
     maxInstances: 1,
     'appium:deviceName': 'test_device',
     'appium:platformVersion': '10.0',
-    'appium:orientation': 'PORTRAIT',
     'appium:browserName': 'chrome',
     'appium:automationName': 'UiAutomator2',
-    'appium:newCommandTimeout': 180000,
+    'appium:newCommandTimeout': 180000
   }],
   //
   // ===================
