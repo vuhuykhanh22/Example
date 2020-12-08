@@ -6,10 +6,10 @@ describe('Index', () => {
     browser.$("div.form-username-slash input[name='username']").setValue(`${process.env.USERNAME}`);
     browser.$("div.form-password-slash input[name='password']").setValue(`${process.env.PASSWORD}`);
     $('input.login-button').click();
-    const localSettingForDisableWelcomeInfo = 'window.localStorage.setItem("gaia.1::com.cybozu.kintone.mobile.LocalSetting", \'{"v2NavigationPanelButtonTooltipDisplayed":true,"v2WelcomeDialogDisplayed":true}\')';
-    browser.executeScript(localSettingForDisableWelcomeInfo, [])
-    // $('button.gaia-mobile-v2-ui-welcomedialog-close-button').click()
-    // $('.gaia-mobile-v2-ui-tooltip-navigation-panel-button .gaia-mobile-v2-ui-tooltip-closebutton').click();
+    // const localSettingForDisableWelcomeInfo = 'window.localStorage.setItem("gaia.1::com.cybozu.kintone.mobile.LocalSetting", \'{"v2NavigationPanelButtonTooltipDisplayed":true,"v2WelcomeDialogDisplayed":true}\')';
+    // browser.executeScript(localSettingForDisableWelcomeInfo, [])
+    $('button.gaia-mobile-v2-ui-welcomedialog-close-button').click()
+    $('.gaia-mobile-v2-ui-tooltip-navigation-panel-button .gaia-mobile-v2-ui-tooltip-closebutton').click();
   });
 
   it('should save some screenshots', () => {
