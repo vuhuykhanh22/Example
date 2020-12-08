@@ -2,9 +2,9 @@ import { expect } from 'chai';
 
 describe('Index', () => {
   before(() => {
-    browser.url('https://hirayama-2008-1.cybozu-dev.com/k/m/5/');
-    browser.$("div.form-username-slash input[name='username']").setValue("cybozu");
-    browser.$("div.form-password-slash input[name='password']").setValue("cybozu");
+    browser.url('https://hbr0a.kintone.com/k/m/541/');
+    browser.$("div.form-username-slash input[name='username']").setValue("khiem");
+    browser.$("div.form-password-slash input[name='password']").setValue("khiem");
     $('input.login-button').click();
     const localSettingForDisableWelcomeInfo = 'window.localStorage.setItem("gaia.1::com.cybozu.kintone.mobile.LocalSetting", \'{"v2NavigationPanelButtonTooltipDisplayed":true,"v2WelcomeDialogDisplayed":true}\')';
     browser.executeScript(localSettingForDisableWelcomeInfo, [])
