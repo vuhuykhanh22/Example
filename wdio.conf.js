@@ -55,7 +55,7 @@ exports.config = {
     'appium:orientation': 'PORTRAIT',
     'appium:browserName': 'chrome',
     'appium:automationName': 'UiAutomator2',
-    'appium:newCommandTimeout': 180000,
+    'appium:newCommandTimeout': 180000
   }],
   //
   // ===================
