@@ -47,8 +47,7 @@ jobs:
           $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
           $ANDROID_HOME/platform-tools/adb devices
           echo "Emulator started"
-          $ANDROID_HOME/platform-tools/adb -P 5037 -s emulator-5554 shell dumpsys package com.android.chrome
-          # Start the Appium Server
+          
       - name: Install dependencies
         run: npm install
 
