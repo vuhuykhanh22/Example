@@ -20,15 +20,14 @@ describe('Index', () => {
     browser.saveFullPageScreen('index-fullPage', { fullPageScrollTimeout: 3000 });
 
     // Save a full page screenshot with all tab executions
-    // browser.saveTabbablePage('index-tabbable', { /* some options, use the same options as for saveFullPageScreen */ });
+    browser.saveTabbablePage('index-tabbable', { /* some options, use the same options as for saveFullPageScreen */ });
   });
 
   it('should compare successful with a baseline', () => {
       // Check a full page screenshot
       expect(browser.checkFullPageScreen('index-fullPage', { /* some options */ })).to.equal(0);
-
       // // Check a full page screenshot with all tab executions
-      // expect(browser.checkTabbablePage('index-tabbable', { /* some options, use the same options as for checkFullPageScreen */ })).to.equal(0);
+      expect(browser.checkTabbablePage('index-tabbable', { /* some options, use the same options as for checkFullPageScreen */ })).to.equal(0);
   }
   );
 });
