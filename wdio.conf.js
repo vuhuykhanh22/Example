@@ -54,7 +54,7 @@ exports.config = {
     'appium:platformVersion': '10.0',
 //     'appium:orientation': 'PORTRAIT',
     'appium:browserName': 'chrome',
-    'appium:nativeWebScreenshot': true,
+     nativeWebScreenshot: true,
     // 'appium:automationName': 'UiAutomator2',
     'appium:newCommandTimeout': 180000
   }],
