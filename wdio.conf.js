@@ -119,7 +119,7 @@ exports.config = {
     ],
     ['image-comparison', {
       // 基準となる画像を保存するフォルダ
-      baselineFolder: join(process.cwd(), './resources/baseline/'),
+      baselineFolder: join(process.cwd(), './tests/sauceLabsBaseline/mobile_android'),
       // 保存する画像のファイル名のフォーマット
       formatImageName: '{tag}-{logName}-{width}x{height}',
       // テスト実行時に保存される画像を保存するフォルダ
