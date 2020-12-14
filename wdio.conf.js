@@ -50,9 +50,9 @@ exports.config = {
   capabilities: [{
     maxInstances: 1,
     platformName: 'Android',
-    deviceName: process.env.DEVICE_NAME || 'Nexus_6_API_30',
+    deviceName: process.env.DEVICE_NAME || 'Nexus 6',
     browserName: process.env.BROWSER_NAME || 'chrome',
-    'appium:platformVersion': process.env.PLATFORM_VERSION || '11.0',
+    'appium:platformVersion': process.env.PLATFORM_VERSION || '10.0',
     'appium:orientation': 'PORTRAIT',
     'appium:automationName': 'UiAutomator2',
     'appium:newCommandTimeout': 180000,
