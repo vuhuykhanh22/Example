@@ -48,15 +48,15 @@ exports.config = {
   // https://docs.saucelabs.com/reference/platforms-configurator
   //
   capabilities: [{
-    platformName: 'Android',
     maxInstances: 1,
-    'appium:avd': 'test_device',
-    'appium:platformVersion': '10.0',
-//     'appium:orientation': 'PORTRAIT',
-    'appium:browserName': 'chrome',
-     nativeWebScreenshot: true,
-    // 'appium:automationName': 'UiAutomator2',
-    'appium:newCommandTimeout': 180000
+    platformName: 'Android',
+    deviceName: process.env.DEVICE_NAME || 'Nexus_6_API_30',
+    browserName: process.env.BROWSER_NAME || 'chrome',
+    'appium:platformVersion': process.env.PLATFORM_VERSION || '11.0',
+    'appium:orientation': 'PORTRAIT',
+    'appium:automationName': 'UiAutomator2',
+    'appium:newCommandTimeout': 180000,
+    nativeWebScreenshot: true,
   }],
   //
   // ===================
@@ -107,19 +107,19 @@ exports.config = {
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
   // services: ['chromedriver'],
-  host: 'localhost', // default appium port
+  host: 'localhost',
   port: 4723,
   services: [
     [
       'appium', {
-      logPath : './',
-      args: {},
-      command: 'appium',
-    }
+        logPath : './',
+        command: 'appium',
+        args: {},
+      }
     ],
     ['image-comparison', {
       // 基準となる画像を保存するフォルダ
-      baselineFolder: join(process.cwd(), './tests/sauceLabsBaseline/'),
+      baselineFolder: join(process.cwd(), './resources/baseline/'),
       // 保存する画像のファイル名のフォーマット
       formatImageName: '{tag}-{logName}-{width}x{height}',
       // テスト実行時に保存される画像を保存するフォルダ
@@ -132,6 +132,7 @@ exports.config = {
       blockOutStatusBar: true,
       // ブラウザのツールバーを表示するかどうか
       blockOutToolBar: true,
+      // disableCSSAnimation: true
     }],
   ],
 
